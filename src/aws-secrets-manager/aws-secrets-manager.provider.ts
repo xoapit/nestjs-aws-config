@@ -6,7 +6,7 @@ import {
   AWSSecretsManagerModuleOptionsFactory,
 } from './aws-secrets-manager.interface';
 import { AWSSecretsService } from './aws-secrets-manager.service';
-import { AWS_SECRETS_MANAGER_MODULE_OPTIONS } from './contstants';
+import { AWS_SECRETS_MANAGER_MODULE_OPTIONS } from './constants';
 
 export function createAWSSecretsManagerProviders(
   options: AWSSecretsManagerModuleOptions,
@@ -33,7 +33,7 @@ export function createAWSSecretsManagerAsyncProviders(
           provide: AWS_SECRETS_MANAGER_MODULE_OPTIONS,
           useFactory: async (
             optionsFactory: AWSSecretsManagerModuleOptionsFactory,
-          ) => await optionsFactory.createAWSSecrectsManagerModuleOptions(),
+          ) => await optionsFactory.createAWSSecretsManagerModuleOptions(),
           inject: [useClass],
         },
         {

@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
-import { AWSSecretsManagerModule, AWSSecretsManagerModuleOptions, } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsManagerModule, AWSSecretsManagerModuleOptions, } from 'nestjs-aws-config';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';

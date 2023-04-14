@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AWSSecretsService } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsService } from 'nestjs-aws-config';
 
 
 interface DBCredentials {

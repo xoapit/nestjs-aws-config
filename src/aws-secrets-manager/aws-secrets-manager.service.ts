@@ -2,7 +2,7 @@ import { Inject, Injectable, Logger } from '@nestjs/common';
 
 import { GetSecretValueCommand } from '@aws-sdk/client-secrets-manager';
 
-import { AWS_SECRETS_MANAGER_MODULE_OPTIONS } from './contstants';
+import { AWS_SECRETS_MANAGER_MODULE_OPTIONS } from './constants';
 import { AWSSecretsManagerModuleOptions } from './aws-secrets-manager.interface';
 
 @Injectable()
@@ -14,13 +14,13 @@ export class AWSSecretsService {
     private readonly options: AWSSecretsManagerModuleOptions,
   ) {
     if (this.options.secretsSource && this.options.isSetToEnv) {
-      this.setAllSecrectToEnv();
+      this.setAllSecretToEnv();
     }
   }
 
-  async setAllSecrectToEnv() {
+  private async setAllSecretToEnv() {
     try {
-      const secrets = await this.getAllSecrects();
+      const secrets = await this.getAllSecrets();
 
       if (!secrets) {
         this.logger.warn('There is no secrets to set in env');
@@ -45,7 +45,7 @@ export class AWSSecretsService {
     }
   }
 
-  async getAllSecrects<T>() {
+  async getAllSecrets<T>() {
     try {
       const secretsIds = Array.isArray(this.options.secretsSource)
         ? this.options.secretsSource

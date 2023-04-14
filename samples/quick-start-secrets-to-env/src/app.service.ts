@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
 
   getHello(): string {
-    // check if the environment variable is set or not by nestjs-aws-secrets-manager module
+    // check if the environment variable is set or not by nestjs-aws-config module
     return JSON.stringify(process.env);
   }
 }

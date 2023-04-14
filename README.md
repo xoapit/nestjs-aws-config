@@ -7,10 +7,10 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/nestjs-aws-secrets-manager"><img alt="NPM version" src="https://img.shields.io/npm/v/nestjs-aws-secrets-manager.svg" /></a>
-  <a href="https://www.npmjs.com/package/nestjs-aws-secrets-manager"><img alt="NPM downloads" src="https://img.shields.io/npm/dw/nestjs-aws-secrets-manager.svg" /></a>
-  <a href="https://github.com/razzkumar/nestjs-aws-secrets-manager/pulse"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/razzkumar/nestjs-aws-secrets-manager"></a>
-  <a href="https://github.com/razzkumar/nestjs-aws-secrets-manager/graphs/contributors" alt="Contributors"><img src="https://img.shields.io/github/contributors/razzkumar/nestjs-aws-secrets-manager" /></a>
+  <a href="https://www.npmjs.com/package/nestjs-aws-config"><img alt="NPM version" src="https://img.shields.io/npm/v/nestjs-aws-config.svg" /></a>
+  <a href="https://www.npmjs.com/package/nestjs-aws-config"><img alt="NPM downloads" src="https://img.shields.io/npm/dw/nestjs-aws-config.svg" /></a>
+  <a href="https://github.com/razzkumar/nestjs-aws-config/pulse"><img alt="GitHub commit activity" src="https://img.shields.io/github/commit-activity/m/razzkumar/nestjs-aws-config"></a>
+  <a href="https://github.com/razzkumar/nestjs-aws-config/graphs/contributors" alt="Contributors"><img src="https://img.shields.io/github/contributors/razzkumar/nestjs-aws-config" /></a>
   <!-- <a href="https://paypal.me/razzkumar" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a> -->
 </p>
 
@@ -18,10 +18,10 @@
 ## Installation
 
 ```bash
-npm i nestjs-aws-secrets-manager @aws-sdk/client-secrets-manager
+npm i nestjs-aws-config @aws-sdk/client-secrets-manager
 ```
 
-Having troubles configuring `nestjs-aws-secrets-manager`? Clone this repository and `cd` in a sample:
+Having troubles configuring `nestjs-aws-config`? Clone this repository and `cd` in a sample:
 
 ```bash
 cd samples/quick-start
@@ -31,13 +31,13 @@ npm run start:dev
 
 ## Quick start
 
-Import `AWSSecretsManagerModule` into the root `AppModule` and use the `forRoot()` method to configure it. This method accepts the object as [AWSSecretsManagerModuleOptions](https://github.com/razzkumar/nestjs-aws-secrets-manager#options), you can also checkout [samples](https://github.com/razzkumar/nestjs-aws-secrets-manager/tree/main/samples)
+Import `AWSSecretsManagerModule` into the root `AppModule` and use the `forRoot()` method to configure it. This method accepts the object as [AWSSecretsManagerModuleOptions](https://github.com/razzkumar/nestjs-aws-config#options), you can also checkout [samples](https://github.com/razzkumar/nestjs-aws-config/tree/main/samples)
 
 ```typescript
 import { Module } from '@nestjs/common';
 import { SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
 
-import { AWSSecretsManagerModule, AWSSecretsManagerModuleOptions } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsManagerModule, AWSSecretsManagerModuleOptions } from 'nestjs-aws-config';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
@@ -68,7 +68,7 @@ Now we have `getSecretsByID` method on `AWSSecretsService` from we can retrive a
 
 ```typescript
 import { Injectable } from '@nestjs/common';
-import { AWSSecretsService } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsService } from 'nestjs-aws-config';
 
 interface DBCredentials {
   host: string;
@@ -96,7 +96,7 @@ We also can able to set value on process on starting, which allows us to retrive
 ```typescript
 import { Module } from '@nestjs/common';
 import { SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
-import { AWSSecretsManagerModule, AWSSecretsManagerModuleOptions, } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsManagerModule, AWSSecretsManagerModuleOptions, } from 'nestjs-aws-config';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
@@ -132,7 +132,7 @@ Maybe you need to asynchronously pass your module options, for example when you 
 
 import { Module } from '@nestjs/common';
 import { SecretsManagerClient } from '@aws-sdk/client-secrets-manager';
-import { AWSSecretsManagerModule } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsManagerModule } from 'nestjs-aws-config';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
@@ -178,10 +178,10 @@ export interface AWSSecretsManagerModuleOptions {
   isDebug?: boolean;
 }
 ```
-which is available for import from `nestjs-aws-secrets-manager` module
+which is available for import from `nestjs-aws-config` module
 
 ```typescript
-import { AWSSecretsManagerModuleOptions, } from 'nestjs-aws-secrets-manager';
+import { AWSSecretsManagerModuleOptions, } from 'nestjs-aws-config';
 
 ```
 
@@ -205,4 +205,4 @@ New features and bugfixes are always welcome! In order to contribute to this pro
 
 ## License
 
-nestjs-aws-secrets-manager is [MIT licensed](LICENSE).
+nestjs-aws-config is [MIT licensed](LICENSE).

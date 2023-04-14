@@ -10,7 +10,7 @@ export interface AWSSecretsManagerModuleOptions {
 }
 
 export interface AWSSecretsManagerModuleOptionsFactory {
-  createAWSSecrectsManagerModuleOptions():
+  createAWSSecretsManagerModuleOptions():
     | Promise<AWSSecretsManagerModuleOptions>
     | AWSSecretsManagerModuleOptions;
 }
