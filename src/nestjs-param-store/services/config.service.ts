@@ -5,7 +5,7 @@ import { PS_CONFIG_PARAMETERS } from '../constants';
 type Maybe<T> = T | null;
 
 @Injectable()
-export class PSConfigService {
+export class AWSParameterStoreService {
   private static readonly trutyValues = [
     'true',
     'True',
@@ -71,7 +71,9 @@ export class PSConfigService {
       return defaultValue;
     }
 
-    const isTrue = PSConfigService.trutyValues.includes(found.Value ?? '');
+    const isTrue = AWSParameterStoreService.trutyValues.includes(
+      found.Value ?? '',
+    );
 
     return isTrue as R;
   }

@@ -1,5 +1,5 @@
-import { PSConfigOptions } from './config-options.interface';
+import { AWSParameterStoreOptions } from './config-options.interface';
 
-export interface PSConfigOptionsFactory {
-  createOptions(): Promise<PSConfigOptions> | PSConfigOptions;
+export interface AWSParameterStoreOptionsFactory {
+  createOptions(): Promise<AWSParameterStoreOptions> | AWSParameterStoreOptions;
 }

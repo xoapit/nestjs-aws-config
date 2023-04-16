@@ -1,18 +1,22 @@
 import { FactoryProvider } from '@nestjs/common';
-import { PSConfigOptions, PSConfigParameters } from '../interfaces';
+import {
+  AWSParameterStoreOptions,
+  AWSParameterStoreParameters,
+} from '../interfaces';
 import { ParameterStoreService } from '../services';
 import { PS_CONFIG_OPTIONS, PS_CONFIG_PARAMETERS } from '../constants';
 
-export const configParametersProvider: FactoryProvider<PSConfigParameters> = {
-  provide: PS_CONFIG_PARAMETERS,
-  useFactory: (
-    configOptions: PSConfigOptions,
-    psService: ParameterStoreService,
-  ): Promise<PSConfigParameters> => {
-    return psService.getParametersByPath(
-      configOptions.ssmParamStorePath,
-      configOptions.ssmDecryptParams ?? false,
-    );
-  },
-  inject: [PS_CONFIG_OPTIONS, ParameterStoreService],
-};
+export const configParametersProvider: FactoryProvider<AWSParameterStoreParameters> =
+  {
+    provide: PS_CONFIG_PARAMETERS,
+    useFactory: (
+      configOptions: AWSParameterStoreOptions,
+      psService: ParameterStoreService,
+    ): Promise<AWSParameterStoreParameters> => {
+      return psService.getParametersByPath(
+        configOptions.ssmParamStorePath,
+        configOptions.ssmDecryptParams ?? false,
+      );
+    },
+    inject: [PS_CONFIG_OPTIONS, ParameterStoreService],
+  };

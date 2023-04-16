@@ -1,11 +1,13 @@
 import { ModuleMetadata, Type } from '@nestjs/common/interfaces';
-import { PSConfigOptionsFactory } from './options-factory.interface';
-import { PSConfigOptions } from './config-options.interface';
+import { AWSParameterStoreOptionsFactory } from './options-factory.interface';
+import { AWSParameterStoreOptions } from './config-options.interface';
 
-export interface PSConfigModuleAsyncOptions
+export interface AWSParameterStoreModuleAsyncOptions
   extends Pick<ModuleMetadata, 'imports'> {
   inject?: any[];
-  useExisting?: Type<PSConfigOptionsFactory>;
-  useClass?: Type<PSConfigOptionsFactory>;
-  useFactory?: (...args: any[]) => Promise<PSConfigOptions> | PSConfigOptions;
+  useExisting?: Type<AWSParameterStoreOptionsFactory>;
+  useClass?: Type<AWSParameterStoreOptionsFactory>;
+  useFactory?: (
+    ...args: any[]
+  ) => Promise<AWSParameterStoreOptions> | AWSParameterStoreOptions;
 }

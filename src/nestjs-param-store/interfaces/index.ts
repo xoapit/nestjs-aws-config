@@ -1,4 +1,4 @@
-export { PSConfigOptions } from './config-options.interface';
-export { PSConfigModuleAsyncOptions } from './module-async-options.interface';
-export { PSConfigOptionsFactory } from './options-factory.interface';
-export { PSConfigParameters } from './config-parameters.interface';
+export { AWSParameterStoreOptions } from './config-options.interface';
+export { AWSParameterStoreModuleAsyncOptions } from './module-async-options.interface';
+export { AWSParameterStoreOptionsFactory } from './options-factory.interface';
+export { AWSParameterStoreParameters } from './config-parameters.interface';

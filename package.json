@@ -1,6 +1,6 @@
 {
   "name": "nestjs-aws-config",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "NestJS AWS Config",
   "author": "xoapit",
   "license": "MIT",

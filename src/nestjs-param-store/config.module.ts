@@ -1,58 +1,58 @@
 import { Module, Global, DynamicModule, Provider } from '@nestjs/common';
 import {
-  PSConfigOptions,
-  PSConfigModuleAsyncOptions,
-  PSConfigOptionsFactory,
+  AWSParameterStoreOptions,
+  AWSParameterStoreModuleAsyncOptions,
+  AWSParameterStoreOptionsFactory,
 } from './interfaces';
 import {
   createOptionsProvider,
   configParametersProvider,
   ssmClientProvider,
 } from './providers';
-import { PSConfigService, ParameterStoreService } from './services';
+import { AWSParameterStoreService, ParameterStoreService } from './services';
 import { PS_CONFIG_OPTIONS, PS_CONFIG_PARAMETERS } from './constants';
 
 @Global()
 @Module({})
-export class PSConfigModule {
-  public static register(options: PSConfigOptions): DynamicModule {
+export class AWSParameterStoreModule {
+  public static register(options: AWSParameterStoreOptions): DynamicModule {
     const optionsProvider = createOptionsProvider(options);
 
     return {
-      module: PSConfigModule,
+      module: AWSParameterStoreModule,
       providers: [
         optionsProvider,
         configParametersProvider,
         ssmClientProvider,
-        PSConfigService,
+        AWSParameterStoreService,
         ParameterStoreService,
       ],
-      exports: [PSConfigService, PS_CONFIG_PARAMETERS],
+      exports: [AWSParameterStoreService, PS_CONFIG_PARAMETERS],
     };
   }
 
   public static registerAsync(
-    options: PSConfigModuleAsyncOptions,
+    options: AWSParameterStoreModuleAsyncOptions,
   ): DynamicModule {
     const providers = this.createAsyncProviders(options);
 
     return {
-      module: PSConfigModule,
+      module: AWSParameterStoreModule,
       imports: options.imports || [],
       providers,
-      exports: [PSConfigService, PS_CONFIG_PARAMETERS],
+      exports: [AWSParameterStoreService, PS_CONFIG_PARAMETERS],
     };
   }
 
   private static createAsyncProviders(
-    options: PSConfigModuleAsyncOptions,
+    options: AWSParameterStoreModuleAsyncOptions,
   ): Provider[] {
     const optionsProvider = this.createAsyncOptionsProvider(options);
     const reqProviders = [
       optionsProvider,
       configParametersProvider,
       ssmClientProvider,
-      PSConfigService,
+      AWSParameterStoreService,
       ParameterStoreService,
     ];
 
@@ -70,7 +70,7 @@ export class PSConfigModule {
   }
 
   private static createAsyncOptionsProvider(
-    options: PSConfigModuleAsyncOptions,
+    options: AWSParameterStoreModuleAsyncOptions,
   ): Provider {
     if (options.useFactory) {
       return {
@@ -84,7 +84,7 @@ export class PSConfigModule {
 
     return {
       provide: PS_CONFIG_OPTIONS,
-      useFactory: async (optionsFactory: PSConfigOptionsFactory) => {
+      useFactory: async (optionsFactory: AWSParameterStoreOptionsFactory) => {
         return optionsFactory.createOptions();
       },
       inject: inject ? [inject] : [],
