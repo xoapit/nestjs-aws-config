@@ -6,18 +6,15 @@ type Maybe<T> = T | null;
 
 @Injectable()
 export class AWSParameterStoreService {
-  private static readonly trutyValues = [
-    'true',
-    'True',
-    '1',
-    'y',
-    'yes',
-    'Yes',
-  ];
+  private static readonly trueValues = ['true', 'True', '1', 'y', 'yes', 'Yes'];
 
   public constructor(
     @Inject(PS_CONFIG_PARAMETERS) private readonly parameters: Parameter[],
   ) {}
+
+  public getParams() {
+    return this.parameters;
+  }
 
   public getObject<R>(
     prefixKey: string,
@@ -71,7 +68,7 @@ export class AWSParameterStoreService {
       return defaultValue;
     }
 
-    const isTrue = AWSParameterStoreService.trutyValues.includes(
+    const isTrue = AWSParameterStoreService.trueValues.includes(
       found.Value ?? '',
     );
 

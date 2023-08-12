@@ -16,14 +16,24 @@ export class ParameterStoreService {
     path: string,
     decrypt = false,
   ): Promise<Parameter[]> {
-    const getParameters = new GetParametersByPathCommand({
-      Path: path,
-      WithDecryption: decrypt,
-      Recursive: true,
-    });
+    const params: Parameter[] = [];
+    let nextToken;
 
-    const { Parameters = [] } = await this.client.send(getParameters);
+    do {
+      const getParameters = new GetParametersByPathCommand({
+        Path: path,
+        WithDecryption: decrypt,
+        Recursive: true,
+        NextToken: nextToken,
+      });
 
-    return Parameters;
+      const { Parameters = [], NextToken } = await this.client.send(
+        getParameters,
+      );
+      nextToken = NextToken;
+      params.push(...Parameters);
+    } while (!!nextToken);
+
+    return params;
   }
 }
